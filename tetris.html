@@ -404,6 +404,18 @@
             board.width = COLS * CELL_SIZE;
             board.height = ROWS * CELL_SIZE;
 
+            if (width <= 600) {
+                let targetWidth = COLS * CELL_SIZE * 1.5;
+                if (targetWidth > width - 10) {
+                    targetWidth = width - 10;
+                }
+                board.style.width = targetWidth + 'px';
+                board.style.height = (ROWS * CELL_SIZE) + 'px';
+            } else {
+                board.style.width = (COLS * CELL_SIZE) + 'px';
+                board.style.height = (ROWS * CELL_SIZE) + 'px';
+            }
+
             const next = document.getElementById('next-canvas');
             const hold = document.getElementById('hold-canvas');
             next.width = hold.width = 4 * CELL_SIZE;
