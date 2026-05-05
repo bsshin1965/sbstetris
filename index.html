@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -36,7 +35,7 @@
             align-items: center;
             min-height: 100vh;
             overflow: hidden;
-            background-image:
+            background-image: 
                 linear-gradient(var(--grid) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid) 1px, transparent 1px);
             background-size: 30px 30px;
@@ -130,10 +129,7 @@
 
         #overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.8);
             display: flex;
             flex-direction: column;
@@ -196,7 +192,7 @@
             height: 60px;
             cursor: pointer;
         }
-
+        
         .m-btn:active {
             background: rgba(255, 255, 255, 0.3);
         }
@@ -208,21 +204,14 @@
 
         /* Animations */
         @keyframes flash {
-            0% {
-                box-shadow: 0 0 20px var(--accent2);
-                border-color: var(--accent2);
-            }
-
-            100% {
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-                border-color: #333;
-            }
+            0% { box-shadow: 0 0 20px var(--accent2); border-color: var(--accent2); }
+            100% { box-shadow: 0 0 20px rgba(0,0,0,0.5); border-color: #333; }
         }
 
         .level-up {
             animation: flash 0.5s ease-out;
         }
-
+        
         #combo-popup {
             position: absolute;
             top: 50%;
@@ -237,7 +226,7 @@
             transition: opacity 0.5s, transform 0.5s;
             z-index: 50;
         }
-
+        
         #combo-popup.show {
             opacity: 1;
             transform: translate(-50%, -100%);
@@ -246,9 +235,7 @@
 
         /* Responsive */
         @media (max-width: 900px) {
-            #game-container {
-                transform: scale(0.9);
-            }
+            #game-container { transform: scale(0.9); }
         }
 
         @media (max-width: 600px) {
@@ -257,43 +244,35 @@
                 justify-content: flex-start;
                 padding-top: 5px;
             }
-
             #game-container {
                 flex-direction: column;
                 gap: 5px;
                 padding: 5px;
                 transform: scale(1);
             }
-
             #board-container {
                 align-self: center;
             }
-
             .side-panel {
                 flex-direction: row;
                 width: 100%;
                 justify-content: space-around;
             }
-
             .panel-box {
                 flex: 1;
                 margin: 0 2px;
                 padding: 5px;
             }
-
             .panel-box h3 {
                 margin: 0 0 5px 0;
                 font-size: 10px;
             }
-
             .value {
                 font-size: 16px;
             }
-
             .preview-canvas {
                 height: 40px;
             }
-
             #mobile-controls {
                 display: flex;
                 flex-direction: column;
@@ -301,20 +280,17 @@
                 padding: 5px;
                 gap: 5px;
             }
-
             .m-btn {
                 width: 45px;
                 height: 45px;
                 font-size: 18px;
             }
-
             .m-btn.wide {
                 width: 80px;
             }
         }
     </style>
 </head>
-
 <body>
 
     <div id="game-container">
@@ -408,8 +384,8 @@
             const hold = document.getElementById('hold-canvas');
             next.width = hold.width = 4 * CELL_SIZE;
             next.height = hold.height = 4 * CELL_SIZE;
-
-            if (gameEngine) gameEngine.render();
+            
+            if(gameEngine) gameEngine.render();
         }
 
         window.addEventListener('resize', resizeCanvas);
@@ -420,64 +396,64 @@
             I: {
                 color: '#00ffff',
                 matrices: [
-                    [[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],
-                    [[0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0]],
-                    [[0, 0, 0, 0], [0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0]],
-                    [[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0]]
+                    [[0,0,0,0], [1,1,1,1], [0,0,0,0], [0,0,0,0]],
+                    [[0,0,1,0], [0,0,1,0], [0,0,1,0], [0,0,1,0]],
+                    [[0,0,0,0], [0,0,0,0], [1,1,1,1], [0,0,0,0]],
+                    [[0,1,0,0], [0,1,0,0], [0,1,0,0], [0,1,0,0]]
                 ]
             },
             J: {
                 color: '#0000ff',
                 matrices: [
-                    [[1, 0, 0], [1, 1, 1], [0, 0, 0]],
-                    [[0, 1, 1], [0, 1, 0], [0, 1, 0]],
-                    [[0, 0, 0], [1, 1, 1], [0, 0, 1]],
-                    [[0, 1, 0], [0, 1, 0], [1, 1, 0]]
+                    [[1,0,0], [1,1,1], [0,0,0]],
+                    [[0,1,1], [0,1,0], [0,1,0]],
+                    [[0,0,0], [1,1,1], [0,0,1]],
+                    [[0,1,0], [0,1,0], [1,1,0]]
                 ]
             },
             L: {
                 color: '#ffa500',
                 matrices: [
-                    [[0, 0, 1], [1, 1, 1], [0, 0, 0]],
-                    [[0, 1, 0], [0, 1, 0], [0, 1, 1]],
-                    [[0, 0, 0], [1, 1, 1], [1, 0, 0]],
-                    [[1, 1, 0], [0, 1, 0], [0, 1, 0]]
+                    [[0,0,1], [1,1,1], [0,0,0]],
+                    [[0,1,0], [0,1,0], [0,1,1]],
+                    [[0,0,0], [1,1,1], [1,0,0]],
+                    [[1,1,0], [0,1,0], [0,1,0]]
                 ]
             },
             O: {
                 color: '#ffff00',
                 matrices: [
-                    [[1, 1], [1, 1]],
-                    [[1, 1], [1, 1]],
-                    [[1, 1], [1, 1]],
-                    [[1, 1], [1, 1]]
+                    [[1,1], [1,1]],
+                    [[1,1], [1,1]],
+                    [[1,1], [1,1]],
+                    [[1,1], [1,1]]
                 ]
             },
             S: {
                 color: '#00ff00',
                 matrices: [
-                    [[0, 1, 1], [1, 1, 0], [0, 0, 0]],
-                    [[0, 1, 0], [0, 1, 1], [0, 0, 1]],
-                    [[0, 0, 0], [0, 1, 1], [1, 1, 0]],
-                    [[1, 0, 0], [1, 1, 0], [0, 1, 0]]
+                    [[0,1,1], [1,1,0], [0,0,0]],
+                    [[0,1,0], [0,1,1], [0,0,1]],
+                    [[0,0,0], [0,1,1], [1,1,0]],
+                    [[1,0,0], [1,1,0], [0,1,0]]
                 ]
             },
             T: {
                 color: '#800080',
                 matrices: [
-                    [[0, 1, 0], [1, 1, 1], [0, 0, 0]],
-                    [[0, 1, 0], [0, 1, 1], [0, 1, 0]],
-                    [[0, 0, 0], [1, 1, 1], [0, 1, 0]],
-                    [[0, 1, 0], [1, 1, 0], [0, 1, 0]]
+                    [[0,1,0], [1,1,1], [0,0,0]],
+                    [[0,1,0], [0,1,1], [0,1,0]],
+                    [[0,0,0], [1,1,1], [0,1,0]],
+                    [[0,1,0], [1,1,0], [0,1,0]]
                 ]
             },
             Z: {
                 color: '#ff0000',
                 matrices: [
-                    [[1, 1, 0], [0, 1, 1], [0, 0, 0]],
-                    [[0, 0, 1], [0, 1, 1], [0, 1, 0]],
-                    [[0, 0, 0], [1, 1, 0], [0, 1, 1]],
-                    [[0, 1, 0], [1, 1, 0], [1, 0, 0]]
+                    [[1,1,0], [0,1,1], [0,0,0]],
+                    [[0,0,1], [0,1,1], [0,1,0]],
+                    [[0,0,0], [1,1,0], [0,1,1]],
+                    [[0,1,0], [1,1,0], [1,0,0]]
                 ]
             }
         };
@@ -485,24 +461,24 @@
         // SRS Wall Kick Data
         const KICKS = {
             JLSTZ: {
-                "0->1": [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]],
-                "1->0": [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],
-                "1->2": [[0, 0], [1, 0], [1, -1], [0, 2], [1, 2]],
-                "2->1": [[0, 0], [-1, 0], [-1, 1], [0, -2], [-1, -2]],
-                "2->3": [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]],
-                "3->2": [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],
-                "3->0": [[0, 0], [-1, 0], [-1, -1], [0, 2], [-1, 2]],
-                "0->3": [[0, 0], [1, 0], [1, 1], [0, -2], [1, -2]]
+                "0->1": [[0,0], [-1,0], [-1,1], [0,-2], [-1,-2]],
+                "1->0": [[0,0], [1,0], [1,-1], [0,2], [1,2]],
+                "1->2": [[0,0], [1,0], [1,-1], [0,2], [1,2]],
+                "2->1": [[0,0], [-1,0], [-1,1], [0,-2], [-1,-2]],
+                "2->3": [[0,0], [1,0], [1,1], [0,-2], [1,-2]],
+                "3->2": [[0,0], [-1,0], [-1,-1], [0,2], [-1,2]],
+                "3->0": [[0,0], [-1,0], [-1,-1], [0,2], [-1,2]],
+                "0->3": [[0,0], [1,0], [1,1], [0,-2], [1,-2]]
             },
             I: {
-                "0->1": [[0, 0], [-2, 0], [1, 0], [-2, -1], [1, 2]],
-                "1->0": [[0, 0], [2, 0], [-1, 0], [2, 1], [-1, -2]],
-                "1->2": [[0, 0], [-1, 0], [2, 0], [-1, 2], [2, -1]],
-                "2->1": [[0, 0], [1, 0], [-2, 0], [1, -2], [-2, 1]],
-                "2->3": [[0, 0], [2, 0], [-1, 0], [2, 1], [-1, -2]],
-                "3->2": [[0, 0], [-2, 0], [1, 0], [-2, -1], [1, 2]],
-                "3->0": [[0, 0], [1, 0], [-2, 0], [1, -2], [-2, 1]],
-                "0->3": [[0, 0], [-1, 0], [2, 0], [-1, 2], [2, -1]]
+                "0->1": [[0,0], [-2,0], [1,0], [-2,-1], [1,2]],
+                "1->0": [[0,0], [2,0], [-1,0], [2,1], [-1,-2]],
+                "1->2": [[0,0], [-1,0], [2,0], [-1,2], [2,-1]],
+                "2->1": [[0,0], [1,0], [-2,0], [1,-2], [-2,1]],
+                "2->3": [[0,0], [2,0], [-1,0], [2,1], [-1,-2]],
+                "3->2": [[0,0], [-2,0], [1,0], [-2,-1], [1,2]],
+                "3->0": [[0,0], [1,0], [-2,0], [1,-2], [-2,1]],
+                "0->3": [[0,0], [-1,0], [2,0], [-1,2], [2,-1]]
             }
         };
 
@@ -534,7 +510,7 @@
                 }
             }
 
-            playTone(freq, type, duration, vol = 0.1) {
+            playTone(freq, type, duration, vol=0.1) {
                 if (!this.enabled || !this.ctx) return;
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
@@ -554,7 +530,7 @@
             lock() { this.playTone(100, 'sawtooth', 0.2, 0.1); }
             hold() { this.playTone(500, 'triangle', 0.1, 0.1); }
             clearSingle() { this.playTone(800, 'triangle', 0.3, 0.1); }
-            clearTetris() {
+            clearTetris() { 
                 this.playTone(800, 'triangle', 0.2, 0.1);
                 setTimeout(() => this.playTone(1000, 'triangle', 0.4, 0.1), 100);
             }
@@ -570,7 +546,7 @@
             }
 
             startBGM() {
-                if (!this.enabled) return;
+                if(!this.enabled) return;
                 this.stopBGM();
                 this.bgmInterval = setInterval(() => {
                     if (this.ctx.state === 'running') {
@@ -593,29 +569,29 @@
         // --- Game Logic ---
         class Tetris {
             constructor() {
-                this.board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+                this.board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
                 this.score = 0;
                 this.level = 1;
                 this.lines = 0;
                 this.combo = -1;
                 this.bag = [];
                 this.nextBag = [];
-
+                
                 this.current = null;
                 this.hold = null;
                 this.canHold = true;
-
+                
                 this.dropDelay = LEVEL_SPEEDS[0];
                 this.lastDropTime = 0;
                 this.lockDelay = 500;
                 this.lockTimer = null;
                 this.moveCount = 0; // for lock delay reset
-
+                
                 this.isGameOver = false;
                 this.isRunning = false;
                 this.reqId = null;
                 this.startTime = 0;
-
+                
                 this.initBags();
                 this.spawn();
                 this.loadHighScore();
@@ -625,7 +601,7 @@
                 try {
                     const hs = localStorage.getItem('tetris_highscore');
                     if (hs) document.getElementById('highscore').innerText = hs;
-                } catch (e) { }
+                } catch(e) {}
             }
 
             saveHighScore() {
@@ -635,9 +611,9 @@
                         localStorage.setItem('tetris_highscore', this.score);
                         document.getElementById('highscore').innerText = this.score;
                         document.getElementById('highscore').classList.add('level-up');
-                        setTimeout(() => document.getElementById('highscore').classList.remove('level-up'), 500);
+                        setTimeout(()=>document.getElementById('highscore').classList.remove('level-up'), 500);
                     }
-                } catch (e) { }
+                } catch(e) {}
             }
 
             initBags() {
@@ -673,7 +649,7 @@
                 };
                 this.canHold = true;
                 this.moveCount = 0;
-
+                
                 if (this.collide(this.current.x, this.current.y, this.current.matrix)) {
                     this.gameOver();
                 }
@@ -698,20 +674,20 @@
                 if (!this.current) return;
                 const type = this.current.type;
                 if (type === 'O') return; // O doesn't rotate
-
+                
                 const prevRot = this.current.rot;
                 const newRot = (prevRot + 1) % 4;
                 const newMatrix = SHAPES[type].matrices[newRot];
-
+                
                 const kickType = type === 'I' ? 'I' : 'JLSTZ';
                 const kickKey = `${prevRot}->${newRot}`;
-                const tests = KICKS[kickType][kickKey] || [[0, 0]];
-
+                const tests = KICKS[kickType][kickKey] || [[0,0]];
+                
                 for (let i = 0; i < tests.length; i++) {
                     const offset = tests[i];
                     const testX = this.current.x + offset[0];
                     const testY = this.current.y - offset[1]; // SRS Y is inverted
-
+                    
                     if (!this.collide(testX, testY, newMatrix)) {
                         this.current.matrix = newMatrix;
                         this.current.x = testX;
@@ -769,7 +745,7 @@
 
             holdPiece() {
                 if (!this.canHold || !this.current) return;
-
+                
                 const temp = this.current.type;
                 if (this.hold) {
                     this.current.type = this.hold;
@@ -840,15 +816,15 @@
                     else if (linesCleared === 2) { pts = 300 * this.level; audio.clearSingle(); }
                     else if (linesCleared === 3) { pts = 500 * this.level; audio.clearSingle(); }
                     else if (linesCleared === 4) { pts = 800 * this.level; audio.clearTetris(); }
-
+                    
                     if (this.combo > 0) {
                         pts += 50 * this.combo * this.level;
                         this.showComboPopup(this.combo);
                     }
-
+                    
                     this.score += pts;
                     this.lines += linesCleared;
-
+                    
                     // Level up
                     const newLevel = Math.floor(this.lines / 10) + 1;
                     if (newLevel > this.level && newLevel <= 20) {
@@ -863,7 +839,7 @@
                     this.combo = -1;
                 }
             }
-
+            
             showComboPopup(c) {
                 const el = document.getElementById('combo-popup');
                 el.innerText = `COMBO ${c}!`;
@@ -885,12 +861,12 @@
                 audio.stopBGM();
                 audio.gameOver();
                 this.saveHighScore();
-
+                
                 const overlay = document.getElementById('overlay');
                 document.getElementById('msg-title').innerText = "GAME OVER";
                 document.getElementById('msg-desc').innerText = `Score: ${this.score}`;
                 overlay.classList.remove('hidden');
-
+                
                 cancelAnimationFrame(this.reqId);
             }
 
@@ -901,7 +877,7 @@
                 document.getElementById('time').innerText = elapsedSec + 's';
 
                 const deltaTime = time - this.lastDropTime;
-
+                
                 if (deltaTime > this.dropDelay) {
                     if (this.collide(this.current.x, this.current.y + 1, this.current.matrix)) {
                         // Let lock delay handle it, if time exceeds lock delay
@@ -918,17 +894,17 @@
             render() {
                 const bCanvas = document.getElementById('board-canvas');
                 const bCtx = bCanvas.getContext('2d');
-
+                
                 // Clear
                 bCtx.clearRect(0, 0, bCanvas.width, bCanvas.height);
                 bCtx.fillStyle = 'rgba(0, 0, 0, 0.6)'; // Semi-transparent black over the image
                 bCtx.fillRect(0, 0, bCanvas.width, bCanvas.height);
-
+                
                 // Grid
                 bCtx.strokeStyle = 'rgba(255,255,255,0.05)';
-                for (let r = 0; r < ROWS; r++) {
-                    for (let c = 0; c < COLS; c++) {
-                        bCtx.strokeRect(c * CELL_SIZE, r * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+                for(let r=0; r<ROWS; r++){
+                    for(let c=0; c<COLS; c++){
+                        bCtx.strokeRect(c*CELL_SIZE, r*CELL_SIZE, CELL_SIZE, CELL_SIZE);
                     }
                 }
 
@@ -945,21 +921,21 @@
                     // Draw Ghost
                     const ghostY = this.getGhostY();
                     this.drawMatrix(bCtx, this.current.matrix, this.current.x, ghostY, SHAPES[this.current.type].color, true);
-
+                    
                     // Draw Current
                     this.drawMatrix(bCtx, this.current.matrix, this.current.x, this.current.y, SHAPES[this.current.type].color);
                 }
 
                 // Draw Hold
                 const hCtx = document.getElementById('hold-canvas').getContext('2d');
-                hCtx.clearRect(0, 0, 4 * CELL_SIZE, 4 * CELL_SIZE);
+                hCtx.clearRect(0, 0, 4*CELL_SIZE, 4*CELL_SIZE);
                 if (this.hold) {
                     this.drawMatrixCenter(hCtx, SHAPES[this.hold].matrices[0], SHAPES[this.hold].color);
                 }
 
                 // Draw Next
                 const nCtx = document.getElementById('next-canvas').getContext('2d');
-                nCtx.clearRect(0, 0, 4 * CELL_SIZE, 4 * CELL_SIZE);
+                nCtx.clearRect(0, 0, 4*CELL_SIZE, 4*CELL_SIZE);
                 if (this.bag.length > 0) {
                     const nextType = this.bag[this.bag.length - 1];
                     this.drawMatrixCenter(nCtx, SHAPES[nextType].matrices[0], SHAPES[nextType].color);
@@ -974,7 +950,7 @@
                     ctx.globalAlpha = 0.5;
                     ctx.strokeRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
                     ctx.globalAlpha = 1.0;
-
+                    
                     // Inner shadow for 3D effect
                     ctx.fillStyle = 'rgba(0,0,0,0.3)';
                     ctx.fillRect(x * CELL_SIZE + 2, y * CELL_SIZE + 2, CELL_SIZE - 4, CELL_SIZE - 4);
@@ -1015,7 +991,7 @@
             }
 
             start() {
-                this.board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+                this.board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
                 this.score = 0;
                 this.level = 1;
                 this.lines = 0;
@@ -1025,14 +1001,14 @@
                 this.initBags();
                 this.hold = null;
                 this.spawn();
-
+                
                 this.isGameOver = false;
                 this.isRunning = true;
                 this.lastDropTime = performance.now();
                 this.startTime = Date.now();
-
+                
                 document.getElementById('overlay').classList.add('hidden');
-
+                
                 audio.init();
                 audio.startBGM();
 
@@ -1053,20 +1029,20 @@
 
         // --- Input Handling ---
         let keys = {};
-
+        
         document.addEventListener('keydown', (e) => {
             if (!gameEngine.isRunning) return;
             if (keys[e.key]) return; // Prevent hold repeat initially
             keys[e.key] = true;
 
-            switch (e.key) {
+            switch(e.key) {
                 case 'ArrowLeft': gameEngine.moveLeft(); break;
                 case 'ArrowRight': gameEngine.moveRight(); break;
-                case 'ArrowUp':
+                case 'ArrowUp': 
                 case 'x': gameEngine.rotate(); break;
                 case 'ArrowDown': gameEngine.moveDown(true); break;
                 case ' ': gameEngine.hardDrop(); break;
-                case 'c':
+                case 'c': 
                 case 'C': gameEngine.holdPiece(); break;
             }
         });
@@ -1101,13 +1077,13 @@
             const btn = document.getElementById(id);
             btn.addEventListener('touchstart', (e) => {
                 e.preventDefault();
-                if (gameEngine.isRunning) btnMap[id]();
-            }, { passive: false });
+                if(gameEngine.isRunning) btnMap[id]();
+            }, {passive: false});
         }
-
+        
         // Render initial state
         gameEngine.render();
-
+        
         // Background Image Cycler
         const bgImages = ['/bg1.png', '/bg2.png', '/bg3.png', '/bg4.png', '/bg5.png'];
         let currentBgIndex = 0;
@@ -1140,8 +1116,7 @@
             currentBgIndex = (currentBgIndex + 1) % bgImages.length;
             setBgImage(currentBgIndex);
         }, 30000);
-
+        
     </script>
 </body>
-
 </html>
